@@ -1,7 +1,6 @@
 ```python
 #-*- coding:utf-8 -*-
 import pandas as pd
-from pandas import Series, DataFrame
 #为了方便，在运行前先把SKU LOCALNAME改成SKU_LOCALNAME（sku表）, SKU CODE改成SKU_CODE(两张表)
 
 filename = 'SKU-06010.txt'
