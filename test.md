@@ -102,4 +102,5 @@ print('TTL Binding rate {0[4]} (+{0[5]} vs L R12)，New Binding rate {0[6]} (+{0
 hair_YTD_list = [hair_YTD1, hair_YTD2, hair_YTD3, hair_YTD4, hair_YTD5, hair_YTD6, hair_YTD7, hair_YTD8]
 print('TTL New Binding   {0[0]} (+{0[1]} vs L YTD)，New Binding Purchaser {0[2]} (+{0[3]} vs L YTD).'.format(hair_YTD_list))
 print('TTL Binding rate {0[4]} (+{0[5]} vs L YTD)，New Binding rate {0[6]} (+{0[7]} vs L YTD)'.format(hair_YTD_list))
+#最后要注意筛选出+-20%这样的形式
 ```
