@@ -1,3 +1,4 @@
+# sku表筛选
 ```python
 #-*- coding:utf-8 -*-
 import pandas as pd
@@ -20,4 +21,85 @@ sku_dataset = sku_dataset[~sku_dataset.SKU_LOCALNAME.str.contains('随机|换购
 
 sku_dataset.to_csv(path_or_buf = r'C:\Users\mye\Desktop\jupyter\test.csv', encoding="utf_8_sig")
 #导出为csv
+```
+# bind邮件生成
+```python
+#先整合好表格，输出月报的内容，再去word改格式
+#-*- coding:utf-8 -*-
+import pandas as pd
+filename = 'bind改.txt'
+bind = pd.read_table(filename)
+
+man_MTD1 = bind.loc[0]['man当月人数']
+man_MTD2 = bind.loc[0]['man去年占比']
+man_MTD3 = bind.loc[1]['man当月人数']
+man_MTD4 = bind.loc[1]['man去年占比']
+man_MTD5 = bind.loc[24]['man当月人数']
+man_MTD6 = bind.loc[24]['man去年占比']
+man_MTD7 = bind.loc[25]['man当月人数']
+man_MTD8 = bind.loc[25]['man去年占比']
+
+man_R121 = bind.loc[0]['manR12人数']
+man_R122 = bind.loc[0]['manR12_L占比']
+man_R123 = bind.loc[1]['manR12人数']
+man_R124 = bind.loc[1]['manR12_L占比']
+man_R125 = bind.loc[24]['manR12人数']
+man_R126 = bind.loc[24]['manR12_L占比']
+man_R127 = bind.loc[25]['manR12人数']
+man_R128 = bind.loc[25]['manR12_L占比']
+
+man_YTD1 = bind.loc[0]['manYTD人数']
+man_YTD2 = bind.loc[0]['manYTD_L占比']
+man_YTD3 = bind.loc[1]['manYTD人数']
+man_YTD4 = bind.loc[1]['manYTD_L占比']
+man_YTD5 = bind.loc[24]['manYTD人数']
+man_YTD6 = bind.loc[24]['manYTD_L占比']
+man_YTD7 = bind.loc[25]['manYTD人数']
+man_YTD8 = bind.loc[25]['manYTD_L占比']
+
+hair_MTD1 = bind.loc[0]['hair当月人数']
+hair_MTD2 = bind.loc[0]['hair去年占比']
+hair_MTD3 = bind.loc[1]['hair当月人数']
+hair_MTD4 = bind.loc[1]['hair去年占比']
+hair_MTD5 = bind.loc[24]['hair当月人数']
+hair_MTD6 = bind.loc[24]['hair去年占比']
+hair_MTD7 = bind.loc[25]['hair当月人数']
+hair_MTD8 = bind.loc[25]['hair去年占比']
+
+hair_R121 = bind.loc[0]['hairR12人数']
+hair_R122 = bind.loc[0]['hairR12_L占比']
+hair_R123 = bind.loc[1]['hairR12人数']
+hair_R124 = bind.loc[1]['hairR12_L占比']
+hair_R125 = bind.loc[24]['hairR12人数']
+hair_R126 = bind.loc[24]['hairR12_L占比']
+hair_R127 = bind.loc[25]['hairR12人数']
+hair_R128 = bind.loc[25]['hairR12_L占比']
+
+hair_YTD1 = bind.loc[0]['hairYTD人数']
+hair_YTD2 = bind.loc[0]['hairYTD_L占比']
+hair_YTD3 = bind.loc[1]['hairYTD人数']
+hair_YTD4 = bind.loc[1]['hairYTD_L占比']
+hair_YTD5 = bind.loc[24]['hairYTD人数']
+hair_YTD6 = bind.loc[24]['hairYTD_L占比']
+hair_YTD7 = bind.loc[25]['hairYTD人数']
+hair_YTD8 = bind.loc[25]['hairYTD_L占比']
+
+man_MTD_list = [man_MTD1, man_MTD2, man_MTD3, man_MTD4, man_MTD5, man_MTD6, man_MTD7, man_MTD8]
+print('TTL New Binding   {0[0]} (+{0[1]} vs 2019 May)，New Binding Purchaser {0[2]} (+{0[3]} vs 2019 May).'.format(man_MTD_list))
+print('TTL Binding rate {0[4]} (+{0[5]} vs 2019 May)，New Binding rate {0[6]} (+{0[7]} vs 2019 May)'.format(man_MTD_list))
+man_R12_list = [man_R121, man_R122, man_R123, man_R124, man_R125, man_R126, man_R127, man_R128]
+print('TTL New Binding   {0[0]} (+{0[1]} vs L R12)，New Binding Purchaser {0[2]} (+{0[3]} vs L R12).'.format(man_R12_list))
+print('TTL Binding rate {0[4]} (+{0[5]} vs L R12)，New Binding rate {0[6]} (+{0[7]} vs L R12)'.format(man_R12_list))
+man_YTD_list = [man_YTD1, man_YTD2, man_YTD3, man_YTD4, man_YTD5, man_YTD6, man_YTD7, man_YTD8]
+print('TTL New Binding   {0[0]} (+{0[1]} vs L YTD)，New Binding Purchaser {0[2]} (+{0[3]} vs L YTD).'.format(man_YTD_list))
+print('TTL Binding rate {0[4]} (+{0[5]} vs L YTD)，New Binding rate {0[6]} (+{0[7]} vs L YTD)'.format(man_YTD_list))
+hair_MTD_list = [hair_MTD1, hair_MTD2, hair_MTD3, hair_MTD4, hair_MTD5, hair_MTD6, hair_MTD7, hair_MTD8]
+print('TTL New Binding   {0[0]} (+{0[1]} vs 2019 May)，New Binding Purchaser {0[2]} (+{0[3]} vs 2019 May).'.format(hair_MTD_list))
+print('TTL Binding rate {0[4]} (+{0[5]} vs 2019 May)，New Binding rate {0[6]} (+{0[7]} vs 2019 May)'.format(hair_MTD_list))
+hair_R12_list = [hair_R121, hair_R122, hair_R123, hair_R124, hair_R125, hair_R126, hair_R127, hair_R128]
+print('TTL New Binding   {0[0]} (+{0[1]} vs L R12)，New Binding Purchaser {0[2]} (+{0[3]} vs L R12).'.format(hair_R12_list))
+print('TTL Binding rate {0[4]} (+{0[5]} vs L R12)，New Binding rate {0[6]} (+{0[7]} vs L R12)'.format(hair_R12_list))
+hair_YTD_list = [hair_YTD1, hair_YTD2, hair_YTD3, hair_YTD4, hair_YTD5, hair_YTD6, hair_YTD7, hair_YTD8]
+print('TTL New Binding   {0[0]} (+{0[1]} vs L YTD)，New Binding Purchaser {0[2]} (+{0[3]} vs L YTD).'.format(hair_YTD_list))
+print('TTL Binding rate {0[4]} (+{0[5]} vs L YTD)，New Binding rate {0[6]} (+{0[7]} vs L YTD)'.format(hair_YTD_list))
 ```
