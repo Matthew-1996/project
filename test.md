@@ -11,12 +11,11 @@ sku_zl = pd.read_table(filename2)
 
 zl_code = list(sku_zl['SKU_CODE'])
 sku_dataset = sku_dataset[~sku_dataset.SKU_CODE.isin(zl_code)]
-sku_dataset
 #删除整理表中已有的sku code
 sku_dataset['CATEGORYCH'] = sku_dataset['CATEGORYCH'].apply(str)
 sku_dataset = sku_dataset[~sku_dataset.CATEGORYCH.str.contains('彩妆|脸部护理')]
 sku_dataset['SKU_LOCALNAME'] = sku_dataset['SKU_LOCALNAME'].apply(str)
-sku_dataset = sku_dataset[~sku_dataset.SKU_LOCALNAME.str.contains('随机|换购|葡萄籽|玻尿酸|券|肌底液|紧肤水|卸妆|海报|腮红|睫毛|眼线|眼影|眉笔|档|化妆|青春密码|唇膏|唇釉|唇彩|唇线笔|甲油|美甲|粉饼|遮瑕|粉底|白护|自由来|沁润|凝养|雪颜|纤体|清润|眉笔|恒放|魅力|风盈|清盈|盈爽|时尚珍藏')]
+sku_dataset = sku_dataset[~sku_dataset.SKU_LOCALNAME.str.contains('随机|换购|葡萄籽|玻尿酸|券|肌底液|紧肤水|卸妆|海报|腮红|睫毛|眼线|眼影|眉笔|档|化妆|青春密码|唇膏|唇釉|唇彩|唇线笔|甲油|美甲|粉饼|遮瑕|隔离|粉底|水活喷雾|彩妆|彩装|美颜液|白护|复颜|美白|肌底|自由来|沁润|凝养|雪颜|纤体|清润|恒放|魅力|风盈|清盈|盈爽|时尚珍藏|臻颜|创世|科研|矿物净化|卡片|卡贴|立牌|明信片')]
 #删除不需要的类别和关键词
 
 sku_dataset.to_csv(path_or_buf = r'C:\Users\mye\Desktop\jupyter\test.csv', encoding="utf_8_sig")
