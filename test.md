@@ -104,3 +104,107 @@ print('TTL New Binding   {0[0]} (+{0[1]} vs L YTD)，New Binding Purchaser {0[2]
 print('TTL Binding rate {0[4]} (+{0[5]} vs L YTD)，New Binding rate {0[6]} (+{0[7]} vs L YTD)'.format(hair_YTD_list))
 #最后要注意筛选出+-20%这样的形式
 ```
+# brand health邮件生成
+```python
+filename1 = 'Brand Health Checking Report_ Men_202005.txt'
+filename2 = 'Brand Health Checking Report_ Hair_202005.txt'
+brand_health1 = pd.read_table(filename1, skiprows = 4)
+brand_health2 = pd.read_table(filename2, skiprows = 4)
+#skiprows = 4，删除前四行
+brand_health1.drop(brand_health1.columns[0], axis=1, inplace=True)
+brand_health2.drop(brand_health2.columns[0], axis=1, inplace=True)  
+#删除第一列
+
+man_r121 = brand_health1.loc[5]['Men']
+man_r122 = brand_health1.loc[5]['Evol%']
+man_r123 = brand_health1.loc[12]['Men']
+man_r124 = brand_health1.loc[12]['Evol%']
+man_r125 = brand_health1.loc[13]['Men']
+man_r126 = brand_health1.loc[26]['Men']
+man_r127 = brand_health1.loc[18]['Men']
+man_r128 = brand_health1.loc[18]['Evol%']
+man_r129 = brand_health1.loc[24]['Men']
+man_r1210 = brand_health1.loc[24]['Evol%']
+man_r1211 = brand_health1.loc[9]['Men']
+man_r1212 = brand_health1.loc[9]['Evol%']
+man_r1213 = brand_health1.loc[11]['Men']
+man_r1214 = brand_health1.loc[11]['Evol%']
+
+man_ytd1 = brand_health1.loc[5]['Men.1']
+man_ytd2 = brand_health1.loc[5]['Evol%.1']
+man_ytd3 = brand_health1.loc[12]['Men.1']
+man_ytd4 = brand_health1.loc[12]['Evol%.1']
+man_ytd5 = brand_health1.loc[13]['Men.1']
+man_ytd6 = brand_health1.loc[26]['Men.1']
+man_ytd7 = brand_health1.loc[18]['Men.1']
+man_ytd8 = brand_health1.loc[18]['Evol%.1']
+man_ytd9 = brand_health1.loc[24]['Men.1']
+man_ytd10 = brand_health1.loc[24]['Evol%.1']
+man_ytd11 = brand_health1.loc[9]['Men.1']
+man_ytd12 = brand_health1.loc[9]['Evol%.1']
+man_ytd13 = brand_health1.loc[11]['Men.1']
+man_ytd14 = brand_health1.loc[11]['Evol%.1']
+
+hair_r121 = brand_health2.loc[5]['Hair']
+hair_r122 = brand_health2.loc[5]['Evol%']
+hair_r123 = brand_health2.loc[12]['Hair']
+hair_r124 = brand_health2.loc[12]['Evol%']
+hair_r125 = brand_health2.loc[13]['Hair']
+hair_r126 = brand_health2.loc[26]['Hair']
+hair_r127 = brand_health2.loc[18]['Hair']
+hair_r128 = brand_health2.loc[18]['Evol%']
+hair_r129 = brand_health2.loc[24]['Hair']
+hair_r1210 = brand_health2.loc[24]['Evol%']
+hair_r1211 = brand_health2.loc[9]['Hair']
+hair_r1212 = brand_health2.loc[9]['Evol%']
+hair_r1213 = brand_health2.loc[11]['Hair']
+hair_r1214 = brand_health2.loc[11]['Evol%']
+
+hair_ytd1 = brand_health2.loc[5]['Hair.1']
+hair_ytd2 = brand_health2.loc[5]['Evol%.1']
+hair_ytd3 = brand_health2.loc[12]['Hair.1']
+hair_ytd4 = brand_health2.loc[12]['Evol%.1']
+hair_ytd5 = brand_health2.loc[13]['Hair.1']
+hair_ytd6 = brand_health2.loc[26]['Hair.1']
+hair_ytd7 = brand_health2.loc[18]['Hair.1']
+hair_ytd8 = brand_health2.loc[18]['Evol%.1']
+hair_ytd9 = brand_health2.loc[24]['Hair.1']
+hair_ytd10 = brand_health2.loc[24]['Evol%.1']
+hair_ytd11 = brand_health2.loc[9]['Hair.1']
+hair_ytd12 = brand_health2.loc[9]['Evol%.1']
+hair_ytd13 = brand_health2.loc[11]['Hair.1']
+hair_ytd14 = brand_health2.loc[11]['Evol%.1']
+
+man_r12_list = []
+man_ytd_list = []
+hair_r12_list = []
+hair_ytd_list = []
+for i in range(1,15):
+    a = 'man_r12' + str(i)
+    b = 'man_ytd' + str(i)
+    c = 'hair_r12' + str(i)
+    d = 'hair_ytd' + str(i)
+    a = eval(a)
+    b = eval(b)
+    c = eval(c)
+    d = eval(d)
+    man_r12_list.append(a)
+    man_ytd_list.append(b)
+    hair_r12_list.append(c)
+    hair_ytd_list.append(d)
+
+#把取出的数加入list
+
+print('\nMAN_R12\nTotal Purchaser {0[0]}K (+{0[1]} vs L R12). New Purchaser {0[2]}K (+{0[3]} vs L R12), {0[4]} of total Purchaser.'.format(man_r12_list))
+print('Avg.age: {0[5]}'.format(man_r12_list))
+print('New repeat rate {0[6]}, +{0[7]} vs L R12.'.format(man_r12_list))
+print('Retention rate {0[8]}, +{0[9]} vs L R12.'.format(man_r12_list))
+print('ATV {0[10]} RMB, +{0[11]} vs L R12.'.format(man_r12_list))
+print('Annual Frequency {0[12]}, +{0[13]} vs L R12.'.format(man_r12_list))
+
+print('\nMAN_YTD\nTotal Purchaser {0[0]}K (+{0[1]} vs LY). New Purchaser {0[2]}K (+{0[3]} vs LY), {0[4]} of total Purchaser.\nAvg.age: {0[5]}\nNew repeat rate {0[6]}, +{0[7]} vs LY.\nRetention rate {0[8]}, +{0[9]} vs LY.\nATV {0[10]} RMB, +{0[11]} vs LY.\nAnnual Frequency {0[12]}, +{0[13]} vs LY.'.format(man_ytd_list))
+  
+print('\nHAIR_R12\nTotal Purchaser {0[0]}K (+{0[1]} vs L R12). New Purchaser {0[2]}K (+{0[3]} vs L R12), {0[4]} of total Purchaser.\nAvg.age: {0[5]}\nNew repeat rate {0[6]}, +{0[7]} vs L R12.\nRetention rate {0[8]}, +{0[9]} vs L R12.\nATV {0[10]} RMB, +{0[11]} vs L R12.\nAnnual Frequency {0[12]}, +{0[13]} vs L R12.'.format(hair_r12_list))
+
+print('\nHAIR_YTD\nTotal Purchaser {0[0]}K (+{0[1]} vs LY). New Purchaser {0[2]}K (+{0[3]} vs LY), {0[4]} of total Purchaser.\nAvg.age: {0[5]}\nNew repeat rate {0[6]}, +{0[7]} vs LY.\nRetention rate {0[8]}, +{0[9]} vs LY.\nATV {0[10]} RMB, +{0[11]} vs LY.\nAnnual Frequency {0[12]}, +{0[13]} vs LY.'.format(hair_ytd_list))
+```
