@@ -207,4 +207,5 @@ print('\nMAN_YTD\nTotal Purchaser {0[0]}K (+{0[1]} vs LY). New Purchaser {0[2]}K
 print('\nHAIR_R12\nTotal Purchaser {0[0]}K (+{0[1]} vs L R12). New Purchaser {0[2]}K (+{0[3]} vs L R12), {0[4]} of total Purchaser.\nAvg.age: {0[5]}\nNew repeat rate {0[6]}, +{0[7]} vs L R12.\nRetention rate {0[8]}, +{0[9]} vs L R12.\nATV {0[10]} RMB, +{0[11]} vs L R12.\nAnnual Frequency {0[12]}, +{0[13]} vs L R12.'.format(hair_r12_list))
 
 print('\nHAIR_YTD\nTotal Purchaser {0[0]}K (+{0[1]} vs LY). New Purchaser {0[2]}K (+{0[3]} vs LY), {0[4]} of total Purchaser.\nAvg.age: {0[5]}\nNew repeat rate {0[6]}, +{0[7]} vs LY.\nRetention rate {0[8]}, +{0[9]} vs LY.\nATV {0[10]} RMB, +{0[11]} vs LY.\nAnnual Frequency {0[12]}, +{0[13]} vs LY.'.format(hair_ytd_list))
+#最后要注意筛选出+-20%这样的形式,+0%,年月日
 ```
